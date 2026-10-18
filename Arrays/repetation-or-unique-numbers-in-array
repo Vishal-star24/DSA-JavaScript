@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+var uniqueOccurrences = function(arr) {
+    let freq = new Map();
+    
+    // Step 1: Count frequency
+    for (let num of arr){
+        freq.set(num, (freq.get(num) || 0) +1)
+    }
+    // console.log(freq);
+
+    // Step 2: Check if frequencies are unique
+    let seen = new Set();
+    for (let check of freq.values()){
+        if(seen.has(check)){
+            return false;
+        }
+        seen.add(check);
+    }
+    return true;
+};
